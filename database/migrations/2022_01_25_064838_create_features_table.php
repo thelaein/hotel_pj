@@ -17,7 +17,6 @@ class CreateFeaturesTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('slug');
-            $table->foreignId('room_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->timestamps();
         });
     }

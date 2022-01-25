@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Feature;
 use App\Http\Requests\StoreFeatureRequest;
 use App\Http\Requests\UpdateFeatureRequest;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class FeatureController extends Controller
 {
@@ -15,7 +17,8 @@ class FeatureController extends Controller
      */
     public function index()
     {
-        //
+        return Feature::inRandomOrder()->limit(rand(1,4))->get()->pluck('id');
+
     }
 
     /**
@@ -25,7 +28,8 @@ class FeatureController extends Controller
      */
     public function create()
     {
-        //
+        $features=Feature::latest('id')->paginate(5);
+        return view('feature.create',compact('features'));
     }
 
     /**
@@ -36,7 +40,21 @@ class FeatureController extends Controller
      */
     public function store(StoreFeatureRequest $request)
     {
-        //
+//        $request->validate([
+//            'title'=>'required|min:3|unique:categories,title',
+//        ]);
+
+//        $title=ucfirst($request->name);
+//        $feature=new Feature();
+//        $feature->name=$title;
+//        $feature->user_id=Auth::id();
+//        $feature->save();
+//        return redirect()->route('feature.create')->with('status','success');
+        $feature=new Feature();
+        $feature->name=$request->name;
+        $feature->slug=$request->name;
+        $feature->save();
+        return redirect()->route('feature.create')->with('status','success');
     }
 
     /**
@@ -58,7 +76,9 @@ class FeatureController extends Controller
      */
     public function edit(Feature $feature)
     {
-        //
+        $features=Feature::latest('id')->paginate(5);
+
+        return view('feature.edit',compact('features','feature'));
     }
 
     /**
@@ -70,7 +90,12 @@ class FeatureController extends Controller
      */
     public function update(UpdateFeatureRequest $request, Feature $feature)
     {
-        //
+        $feature->name=$request->name;
+        $feature->slug=$request->name;
+
+        $feature->update();
+
+        return redirect()->route('feature.create')->with('status','success');
     }
 
     /**
@@ -81,6 +106,7 @@ class FeatureController extends Controller
      */
     public function destroy(Feature $feature)
     {
-        //
+        $feature->delete();
+        return redirect()->back();
     }
 }
