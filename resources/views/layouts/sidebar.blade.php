@@ -30,6 +30,19 @@
             <x-side-bar-link name="Change Password" link="{{ route('profile.change-password') }}" class="fas fa-key"></x-side-bar-link>
         </li>
 
+        <li>
+            <x-side-bar-title>Manage Room</x-side-bar-title>
+        </li>
+        <li>
+            <x-side-bar-link name="Your Profile" link="{{ route('room.index') }}" class="fas fa-user"></x-side-bar-link>
+        </li>
+        <li>
+            <x-side-bar-link name="Update Photo" link="{{ route('room.create') }}" class="fas fa-image"></x-side-bar-link>
+        </li>
+        <li>
+{{--            <x-side-bar-link name="Change Password" link="{{ route('roo') }}" class="fas fa-key"></x-side-bar-link>--}}
+        </li>
+
 
         <li>
             <x-side-bar-spacer></x-side-bar-spacer>
