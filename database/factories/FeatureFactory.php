@@ -13,8 +13,11 @@ class FeatureFactory extends Factory
      */
     public function definition()
     {
+        $name=$this->faker->word(5);
+        $slug=\Illuminate\Support\Str::slug($name);
         return [
-            //
+            'name'=>$name,
+            'slug'=>$slug,
         ];
     }
 }
