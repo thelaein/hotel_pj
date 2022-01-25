@@ -7,6 +7,7 @@ use App\Http\Requests\StoreFeatureRequest;
 use App\Http\Requests\UpdateFeatureRequest;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class FeatureController extends Controller
 {
@@ -91,7 +92,7 @@ class FeatureController extends Controller
     public function update(UpdateFeatureRequest $request, Feature $feature)
     {
         $feature->name=$request->name;
-        $feature->slug=$request->name;
+        $feature->slug=Str::slug($request->name);
 
         $feature->update();
 
