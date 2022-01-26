@@ -37,7 +37,12 @@
 
                             <div class="mb-3">
                                 <label class="form-label">Feature Image</label>
-                                <input type="file" name="featureimg" class="form-control" >
+                                <input type="file" name="feature_image" class="form-control" >
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Photos</label>
+                                <input type="file" name="photos[]" class="form-control" multiple>
                             </div>
 
 

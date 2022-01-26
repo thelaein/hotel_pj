@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Photo;
 use App\Models\Room;
 use App\Http\Requests\StoreRoomRequest;
 use App\Http\Requests\UpdateRoomRequest;
@@ -47,6 +48,10 @@ class RoomController extends Controller
         if (!Storage::exists('public/thumbnail')){
             Storage::makeDirectory('public/thumbnail');
         }
+        //store feature image
+        $featureImg=$request->file('feature_image');
+        $newFeatureImageName=uniqid()."_feature_image.".$featureImg->extension();
+        $featureImg->storeAs("public/feature_image",$newFeatureImageName);
 
 
         $name = $request->name;
@@ -54,7 +59,7 @@ class RoomController extends Controller
         $room = new Room();
         $room->name = $name;
         $room->slug = $slug;
-//        $room->photo = $request->photo;
+        $room->feature_image = $newFeatureImageName;
         $room->price = $request->price;
         $room->description = $request->description;
         $room->excerpt = Str::words($request->description,5);
@@ -64,22 +69,22 @@ class RoomController extends Controller
         $room->features()->attach($request->features);
 
 
+
         if ($request->hasFile('photos')){
             foreach ($request->file('photos') as $photo){
-                $newName = uniqid()."_photo.".$photo->extension();
+                $newName=uniqid()."_photo.".$photo->extension();
                 $photo->storeAs('public/photo',$newName);
 
-                //intervention image
-                $img = Image::make($photo);
+
+                //ပုံသေး‌အောင်ချုံ့တာ
+                $img=Image::make($photo);
                 $img->fit(200,200);
-                $img->save('storage/thumbnail/'.$newName,100);
+                $img->save("storage/thumbnail/".$newName,100);
 
-
-
-                $photo = new Photo();
-                $photo->name = $newName;
-                $photo->post_id = $request->post_id;
-                $photo->user_id = Auth::id();
+                $photo=new Photo();
+                $photo->name=$newName;
+                $photo->room_id=$room->id;
+                $photo->user_id=Auth::id();
                 $photo->save();
 
             }

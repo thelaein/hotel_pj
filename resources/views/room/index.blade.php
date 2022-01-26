@@ -34,7 +34,7 @@
                             <tr>
                                 <th>#</th>
                                 <th class="w-25">Name</th>
-{{--                                <th>Photo</th>--}}
+                                <th>Photo</th>
                                 <th>Features</th>
                                 <th>Price</th>
                                 <th>Description</th>
@@ -49,7 +49,10 @@
                             @forelse($rooms as $room)
                                 <tr>
                                     <td>{{$room->id}}</td>
-                                    <td>{{\Illuminate\Support\Str::words($room->name,5)}}</td>
+                                    <td>
+                                        <img src="{{asset('storage/feature_image/'.$room->feature_image)}}" class="me-2" width="38" alt="">
+                                        {{\Illuminate\Support\Str::words($room->name,5)}}
+                                    </td>
 
 {{--                                        @forelse($room->photos as $photo)--}}
 {{--                                            <a class="my-link" data-gall="gall{{$post->id}}"  href="{{asset('storage/photo/'.$photo->name)}}">--}}
@@ -58,7 +61,14 @@
 {{--                                        @empty--}}
 {{--                                            <p>There is no</p>--}}
 {{--                                        @endforelse--}}
-
+                                    <td>
+                                        @forelse($room->photos as $photo)
+                                            <a class="venobox" data-gall="gallery{{$room->id}}" href="{{asset('storage/photo/'.$photo->name)}}">
+                                                <img src="{{asset('storage/thumbnail/'.$photo->name)}}" height="40" alt="image alt"/></a>
+                                        @empty
+                                            <p class="text-muted small">no photo</p>
+                                        @endforelse
+                                    </td>
 
                                     <td>
                                         @foreach($room->features as $feature)
