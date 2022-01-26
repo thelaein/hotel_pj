@@ -40,33 +40,38 @@ class PhotoController extends Controller
      */
     public function store(StorePhotoRequest $request)
     {
+//            return $request;
 
+
+        $request->validate([
+            'photos'=>'required',
+            'photos.*'=>'file|mimes:jpg,png|max:5024',
+        ]);
         if (!Storage::exists('public/thumbnail')){
             Storage::makeDirectory('public/thumbnail');
         }
 
+
         if ($request->hasFile('photos')){
             foreach ($request->file('photos') as $photo){
-                $newName = uniqid()."_photo.".$photo->extension();
+                $newName=uniqid()."_photo.".$photo->extension();
                 $photo->storeAs('public/photo',$newName);
 
-                //intervention image
-                $img = Image::make($photo);
+
+                //ပုံသေး‌အောင်ချုံ့တာ
+                $img=Image::make($photo);
                 $img->fit(200,200);
-                $img->save('storage/thumbnail/'.$newName,100);
+                $img->save("storage/thumbnail/".$newName,100);
 
-
-
-                $photo = new Photo();
-                $photo->name = $newName;
-                $photo->post_id = $request->post_id;
-                $photo->user_id = Auth::id();
+                $photo=new Photo();
+                $photo->name=$newName;
+                $photo->room_id=$request->room_id;
+                $photo->user_id=Auth::id();
                 $photo->save();
 
             }
         }
         return redirect()->back();
-
     }
 
     /**
