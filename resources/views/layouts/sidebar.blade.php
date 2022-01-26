@@ -34,10 +34,10 @@
             <x-side-bar-title>Manage Room</x-side-bar-title>
         </li>
         <li>
-            <x-side-bar-link name="Your Profile" link="{{ route('room.index') }}" class="fas fa-user"></x-side-bar-link>
+            <x-side-bar-link name="Room Lists" link="{{ route('room.index') }}" class="fas fa-list-alt"></x-side-bar-link>
         </li>
         <li>
-            <x-side-bar-link name="Update Photo" link="{{ route('room.create') }}" class="fas fa-image"></x-side-bar-link>
+            <x-side-bar-link name="Create Room" link="{{ route('room.create') }}" class="fas fa-edit"></x-side-bar-link>
         </li>
         <li>
 {{--            <x-side-bar-link name="Change Password" link="{{ route('roo') }}" class="fas fa-key"></x-side-bar-link>--}}
