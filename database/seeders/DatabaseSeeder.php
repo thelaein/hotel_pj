@@ -5,7 +5,9 @@ namespace Database\Seeders;
 
 use App\Models\Feature;
 
+use App\Models\Post;
 use App\Models\Room;
+use App\Models\Tag;
 use App\Models\User;
 
 use Illuminate\Database\Seeder;
@@ -32,14 +34,19 @@ class DatabaseSeeder extends Seeder
             'remember_token' => Str::random(10),
             'role' => '0'
         ]);
-      
-      
-        Feature::factory(15)->create();
-      
+
+
+
 
 
          \App\Models\User::factory(10)->create();
          Room::factory(20)->create();
+        Feature::factory(15)->create();
+
+
+        Room::all()->each(function ($room){
+            $room->features()->attach(Feature::inRandomOrder()->limit(rand(1,4))->get()->pluck('id'));
+        });
 
 
 

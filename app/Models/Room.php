@@ -11,4 +11,12 @@ class Room extends Model
     public function user(){
         return $this->belongsTo(User::class);
     }
+
+    public function features(){
+        return $this->belongsToMany(Feature::class);
+    }
+
+    public function photos(){
+        return $this->hasMany(Photo::class);
+    }
 }

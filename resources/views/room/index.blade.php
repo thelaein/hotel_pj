@@ -34,7 +34,8 @@
                             <tr>
                                 <th>#</th>
                                 <th class="w-25">Name</th>
-                                <th>Photo</th>
+{{--                                <th>Photo</th>--}}
+                                <th>Features</th>
                                 <th>Price</th>
                                 <th>Description</th>
 {{--                                @if(Auth::user()->role == 0)--}}
@@ -49,7 +50,7 @@
                                 <tr>
                                     <td>{{$room->id}}</td>
                                     <td>{{\Illuminate\Support\Str::words($room->name,5)}}</td>
-                                    <td>
+
 {{--                                        @forelse($room->photos as $photo)--}}
 {{--                                            <a class="my-link" data-gall="gall{{$post->id}}"  href="{{asset('storage/photo/'.$photo->name)}}">--}}
 {{--                                                <img src="{{asset('storage/thumbnail/'.$photo->name)}}" height="40">--}}
@@ -57,7 +58,17 @@
 {{--                                        @empty--}}
 {{--                                            <p>There is no</p>--}}
 {{--                                        @endforelse--}}
+
+
+                                    <td>
+                                        @foreach($room->features as $feature)
+                                            <span class="badge bg-success small rounded-pill">
+                                                <i class="fas fa-hashtag"></i>
+                                                {{$feature->name}}
+                                            </span>
+                                        @endforeach
                                     </td>
+
                                     <td>
                                         {{$room->price}}
                                     </td>
@@ -66,14 +77,7 @@
 
                                     <td>{{$room->user->name}}</td>
 
-{{--                                    <td>--}}
-{{--                                        @foreach($post->tags as $tag)--}}
-{{--                                            <span class="badge bg-success small rounded-pill">--}}
-{{--                                                <i class="fas fa-hashtag"></i>--}}
-{{--                                                {{$tag->title}}--}}
-{{--                                            </span>--}}
-{{--                                        @endforeach--}}
-{{--                                    </td>--}}
+
 
 {{--                                    @if(Auth::user()->role == 0)--}}
 {{--                                        <td>{{$post->user->name}}</td>--}}
