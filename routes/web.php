@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +20,8 @@ use App\Http\Controllers\TestController;
 Route::get('/', function () {
     return view('welcome');
 })->name('index');
+
+Route::get('detail/{slug}',[PageController::class,'show'])->name('detail');
 
 
 Auth::routes();
