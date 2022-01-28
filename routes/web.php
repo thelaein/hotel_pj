@@ -24,6 +24,7 @@ Route::get('/', function () {
 Route::get('detail/{slug}',[PageController::class,'show'])->name('detail');
 
 
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

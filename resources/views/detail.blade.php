@@ -25,7 +25,7 @@
                         <div class="card-text">
                             {{$room->description}}
                         </div>
-                        <a href="{{route('room.index')}}" class="btn btn-outline-primary">Read All</a>
+                        <a href="" class="btn btn-outline-primary">Book Now</a>
 
                     </div>
                 </div>
@@ -38,11 +38,14 @@
                     <div class="card-header">
                         Room Features
                     </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">An item</li>
-                        <li class="list-group-item">A second item</li>
-                        <li class="list-group-item">A third item</li>
-                    </ul>
+                    <div class="card-body">
+                        <ul class="list">
+                            @foreach($room->features as $feature)
+                            <li class="list-item">{{$feature->slug}}</li>
+                            @endforeach
+                        </ul>
+
+                    </div>
                 </div>
             </div>
         </div>

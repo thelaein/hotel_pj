@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Feature;
 use App\Models\Room;
 use Illuminate\Http\Request;
 
@@ -15,8 +16,8 @@ class PageController extends Controller
 
     public function show($slug)
     {
-
         $room = Room::where('slug',$slug)->first();
+//        $feature = Feature::where('slug',$slug)->first();
 //        return $room;
         return view('detail',compact('room'));
     }
