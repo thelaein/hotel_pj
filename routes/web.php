@@ -22,6 +22,9 @@ Route::get('/', function () {
 })->name('index');
 
 Route::get('detail/{slug}',[PageController::class,'show'])->name('detail');
+Route::get('book/{id}',[\App\Http\Controllers\PageController::class,'book'])->name('book');
+Route::resource('book',\App\Http\Controllers\BookController::class);
+
 
 
 
@@ -36,6 +39,7 @@ Route::middleware("auth")->group(function(){
 
     Route::resource('room',\App\Http\Controllers\RoomController::class);
     Route::resource('photo',\App\Http\Controllers\PhotoController::class);
+
 
     Route::prefix("profile")->name("profile.")->group(function(){
         Route::view("/","profile.index")->name('index');
