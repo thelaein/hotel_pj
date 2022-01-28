@@ -124,11 +124,15 @@ class RoomController extends Controller
      */
     public function update(UpdateRoomRequest $request, Room $room)
     {
+        $featureImg=$request->file('feature_image');
+        $newFeatureImageName=uniqid()."_feature_image.".$featureImg->extension();
+        $featureImg->storeAs("public/feature_image",$newFeatureImageName);
+
         $name = $request->name;
         $slug = Str::slug($name);
         $room->name = $name;
         $room->slug = $slug;
-        $room->photo = $request->photo;
+        $room->feature_image = $newFeatureImageName;
         $room->price = $request->price;
         $room->description = $request->description;
         $room->excerpt = Str::words($request->description,5);
@@ -149,10 +153,17 @@ class RoomController extends Controller
      */
     public function destroy(Room $room)
     {
+        foreach ($room->photos as $photo){
+            Storage::delete('public/photo/'.$photo->name);
+            Storage::delete('public/thumbnail/'.$photo->name);
+
+        }
         $room->features()->detach();
+
+        $room->photos()->delete();
 
         $room->delete();
 
-        return redirect()->back()->with('status','success deleted');
+        return redirect()->route('room.index')->with('status','success deleted');
     }
 }
