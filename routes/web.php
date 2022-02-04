@@ -17,13 +17,14 @@ use App\Http\Controllers\PageController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TestController;
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('index');
+Route::get('/', function () {return view('welcome');})->name('index');
+Route::get('room-ui',function (){return view('room-ui');})->name('room-ui');
+Route::get('about',function (){return view('about');})->name('about');
+
 
 Route::get('detail/{slug}',[PageController::class,'show'])->name('detail');
-Route::get('book/{id}',[\App\Http\Controllers\PageController::class,'book'])->name('book');
-Route::resource('book',\App\Http\Controllers\BookController::class);
+Route::get('book/{id}',[PageController::class,'book'])->name('book');
+Route::post('booking',[PageController::class,'booking'])->name('booking');
 
 
 

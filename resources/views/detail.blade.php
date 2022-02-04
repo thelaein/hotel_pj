@@ -14,8 +14,8 @@
         <div class="col-4">
             <div class="my-5">
                 <div class="card">
-                    <img src="{{asset('storage/feature_image/61f17b83b2766_feature_image.jpg')}}" class="card-img-top rounded" alt="...">
 
+                    <img src="{{asset('storage/feature_image/'.$room->feature_image)}}" >
 
                     <div class="card-body">
                         <div class="card-title">
@@ -25,7 +25,7 @@
                         <div class="card-text">
                             {{$room->description}}
                         </div>
-                        <a href="" class="btn btn-outline-primary">Book Now</a>
+                        <a href="{{route('book',$room->id)}}" class="btn btn-outline-primary">Book Now</a>
 
                     </div>
                 </div>

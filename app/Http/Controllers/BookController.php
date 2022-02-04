@@ -43,16 +43,16 @@ class BookController extends Controller
      */
     public function store(StoreBookRequest $request)
     {
-        return $request;
-        $book = new Book();
-
-        $book->name = $request->name;
-        $book->email = $request->email;
-        $book->phone = $request->phone;
-        $book->check_in = $request->check_in;
-        $book->check_out = $request->check_out;
-        $book->save();
-        return redirect()->back()->with('status','Booking success');
+//        return $request;
+//        $book = new Book();
+//
+//        $book->name = $request->name;
+//        $book->email = $request->email;
+//        $book->phone = $request->phone;
+//        $book->check_in = $request->check_in;
+//        $book->check_out = $request->check_out;
+//        $book->save();
+//        return redirect()->back()->with('status','Booking success');
     }
 
     /**
