@@ -38,9 +38,9 @@
                                 <th>Features</th>
                                 <th>Price</th>
                                 <th>Description</th>
-{{--                                @if(Auth::user()->role == 0)--}}
+                                @if(Auth::user()->role == 0)
                                     <th>Owner</th>
-{{--                                @endif--}}
+                                @endif
                                 <th>Control</th>
                                 <th>Created_at</th>
                             </tr>
@@ -54,17 +54,10 @@
                                         {{\Illuminate\Support\Str::words($room->name,5)}}
                                     </td>
 
-{{--                                        @forelse($room->photos as $photo)--}}
-{{--                                            <a class="my-link" data-gall="gall{{$post->id}}"  href="{{asset('storage/photo/'.$photo->name)}}">--}}
-{{--                                                <img src="{{asset('storage/thumbnail/'.$photo->name)}}" height="40">--}}
-{{--                                            </a>--}}
-{{--                                        @empty--}}
-{{--                                            <p>There is no</p>--}}
-{{--                                        @endforelse--}}
                                     <td>
                                         @forelse($room->photos as $photo)
                                             <a class="venobox" data-gall="gallery{{$room->id}}" href="{{asset('storage/photo/'.$photo->name)}}">
-                                                <img src="{{asset('storage/thumbnail/'.$photo->name)}}" height="40" alt="image alt"/></a>
+                                                <img src="{{asset('storage/thumbnail/'.$photo->name)}}" height="40" ></a>
                                         @empty
                                             <p class="text-muted small">no photo</p>
                                         @endforelse
