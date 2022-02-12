@@ -26,7 +26,7 @@
                                 </div>
                                 <div class="card-footer d-inline-block ">
                                     <a href="{{route('detail',$room->slug)}}" class=" bg-secondary btn text-light">See More</a>
-                                    <a href="{{route('book',$room->id)}}" class="btn btn-outline-primary">Book Now</a>
+                                    <a href="{{route('booking',$room->id)}}" class="btn btn-outline-primary">Book Now</a>
                                 </div>
                             </div>
 

@@ -12,7 +12,10 @@
                             @csrf
                             <div class="mb-3">
                                 <label class="form-label">Room Name</label>
-                                <input type="text" name="name" class="form-control">
+                                <input type="text" name="name" class="form-control" >
+                                @error('name')
+                                <p class="text-danger small">{{$message}}</p>
+                                @enderror
                             </div>
 
                             <div class="mb-3">
@@ -26,7 +29,7 @@
                                         </label>
                                     </div>
                                 @endforeach
-                                @error('feature')
+                                @error('features')
                                 <p class="text-danger small">{{$message}}</p>
                                 @enderror
                                 @error('features.*')
@@ -38,11 +41,20 @@
                             <div class="mb-3">
                                 <label class="form-label">Feature Image</label>
                                 <input type="file" name="feature_image" class="form-control" >
+                                @error('feature_image')
+                                <p class="text-danger small">{{$message}}</p>
+                                @enderror
                             </div>
 
                             <div class="mb-3">
                                 <label class="form-label">Photos</label>
                                 <input type="file" name="photos[]" class="form-control" multiple>
+                                @error('photos')
+                                <p class="text-danger small">{{$message}}</p>
+                                @enderror
+                                @error('photos.*')
+                                <p class="text-danger small">{{$message}}</p>
+                                @enderror
                             </div>
 
 
@@ -52,11 +64,16 @@
                                     <span class="input-group-text">$</span>
                                     <input type="text" class="form-control" name="price">
                                 </div>
+                                @error('price')
+                                <p class="text-danger small">{{$message}}</p>
+                                @enderror
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Description</label>
                                 <textarea name="description" id="" cols="30" rows="10" class="form-control"></textarea>
-
+                                @error('description')
+                                <p class="text-danger small">{{$message}}</p>
+                                @enderror
                             </div>
                             <div class="mb-3">
                                 <button class="btn btn-outline-primary">Create Room</button>
