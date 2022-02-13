@@ -22,7 +22,7 @@ class BookController extends Controller
      */
     public function index()
     {
-        //
+      
     }
 
     /**
@@ -41,19 +41,15 @@ class BookController extends Controller
      * @param  \App\Http\Requests\StoreBookRequest  $request
      * @return \Illuminate\Http\Response
      */
-//    public function store(StoreBookRequest $request)
-//    {
-//        return $request;
-//        $book = new Book();
-//
-//        $book->name = $request->name;
-//        $book->email = $request->email;
-//        $book->phone = $request->phone;
-//        $book->check_in = $request->check_in;
-//        $book->check_out = $request->check_out;
-//        $book->save();
-//        return redirect()->back()->with('status','Booking success');
-//    }
+
+
+    public function store(StoreBookRequest $request)
+    {
+
+
+
+    }
+
 
     /**
      * Display the specified resource.
@@ -63,7 +59,7 @@ class BookController extends Controller
      */
     public function show(Book $book)
     {
-        //
+        
     }
 
     /**
@@ -74,7 +70,7 @@ class BookController extends Controller
      */
     public function edit(Book $book)
     {
-        //
+        
     }
 
     /**
@@ -86,7 +82,7 @@ class BookController extends Controller
      */
     public function update(UpdateBookRequest $request, Book $book)
     {
-        //
+        
     }
 
     /**
@@ -97,7 +93,7 @@ class BookController extends Controller
      */
     public function destroy(Book $book)
     {
-        //
+        
     }
 
 }
