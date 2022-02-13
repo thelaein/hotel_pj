@@ -23,8 +23,15 @@ Route::get('about',function (){return view('about');})->name('about');
 
 
 Route::get('detail/{slug}',[PageController::class,'show'])->name('detail');
+
+Route::get('booking/{id}',[\App\Http\Controllers\PageController::class,'book'])->name('booking');
+Route::post('booking',[\App\Http\Controllers\PageController::class,'bookStore'])->name('booking.store');
+
+Route::resource('book',\App\Http\Controllers\BookController::class);
+
 Route::get('book/{id}',[PageController::class,'book'])->name('book');
 Route::post('booking',[PageController::class,'booking'])->name('booking');
+
 
 
 

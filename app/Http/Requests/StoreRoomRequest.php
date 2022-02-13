@@ -24,7 +24,22 @@ class StoreRoomRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name'=>'required',
+            'features'=>'required',
+            'features.*'=>'exists:features,id',
+            'description'=>'required|min:20',
+            'price'=>'required',
+            'photos'=>'required',
+            'photos.*'=>'file|mimes:jpg,png|max:5000',
+            'feature_image'=>'required|file|mimes:jpg,png|max:5000',
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            "name.required"=>"ခေါင်းစဥ်ထည့်လေ",
+            "photos.required"=>"ပုံထည့်လေ ကွာ"
         ];
     }
 }

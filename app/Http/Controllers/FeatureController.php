@@ -41,9 +41,9 @@ class FeatureController extends Controller
      */
     public function store(StoreFeatureRequest $request)
     {
-//        $request->validate([
-//            'title'=>'required|min:3|unique:categories,title',
-//        ]);
+        $request->validate([
+            'name'=>'required|min:3|unique:features,name',
+        ]);
 
 //        $title=ucfirst($request->name);
 //        $feature=new Feature();

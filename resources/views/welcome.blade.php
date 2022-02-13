@@ -33,11 +33,23 @@
         </div>
 </header>
 
+
+                                <div class="card-body">
+                                    <h5 class="card-title">{{$room->name}}</h5>
+                                    <p class="card-text">{{$room->description}}</p>
+                                </div>
+                                <div class="card-footer d-inline-block ">
+                                    <a href="{{route('detail',$room->slug)}}" class=" bg-secondary btn text-light">See More</a>
+                                    <a href="{{route('booking',$room->id)}}" class="btn btn-outline-primary">Book Now</a>
+                                </div>
+                            </div>
+
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-4">
                 <nav class="navbar navbar-expand-lg fixed-top navbar-light" >
                     <div class="container">
+
 
                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
