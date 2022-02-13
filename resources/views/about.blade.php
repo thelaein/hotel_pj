@@ -12,7 +12,7 @@
 <header>
     <div class="container" style="background-color: #e3f2fd;">
         <div class="row align-items-center">
-            <div class="col-sm-12 col-md-6 col-lg-4">
+            <div class="col-sm-5 col-md-4 col-lg-4">
                 <nav class="navbar navbar-expand-lg navbar-light" >
                     <div class="container">
                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -24,10 +24,10 @@
                                     <a class="nav-link active" aria-current="page" href="{{route('index')}}">Home</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="">Rooms</a>
+                                    <a class="nav-link" href="{{route('room-ui')}}">Rooms</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="about.blade.php">About</a>
+                                    <a class="nav-link" href="{{route('about')}}">About</a>
                                 </li>
 
                             </ul>
@@ -35,42 +35,42 @@
                     </div>
                 </nav>
             </div>
-            <div class="col-sm-12 col-md-6 col-lg-4">
+            <div class="col-sm-2 col-md-4 col-lg-4">
                 <a class="navbar-brand" href="{{route('index')}}">Villas</a>
-
-                <a href="{{route('index')}}">
-                    <img src="{{asset('st')}}" alt="">
-                </a>
             </div>
-            <div class="col-sm-12 col-md-6 col-lg-4">
-                <div class="btn-group mt-4">
-                    <a class="px-2" href="#">
-                        <i class="fab fa-facebook-square"></i>
-                    </a>
+            <div class="col-sm-5 col-md-4 col-lg-4">
+                <div class="book-room">
+                    <div class="btn-group mt-4">
+                        <a class="px-2" href="#">
+                            <i class="fab fa-facebook-square"></i>
+                        </a>
 
-                    <a class="px-2" href="#">
-                        <i class="fab fa-instagram"></i>
-                    </a>
+                        <a class="px-2" href="#">
+                            <i class="fab fa-instagram"></i>
+                        </a>
 
-                    <a class="px-2" href="#">
-                        <i class="fab fa-twitter"></i>
-                    </a>
-                    <a class="btn btn-primary my-3" href="#">Book a Room</a>
+                        <a class="px-2" href="#">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                    </div>
+{{--                    <div class="btn">--}}
+{{--                        <a class="btn btn-primary my-3" href="{{route('booking')}}">Book a Room</a>--}}
+{{--                    </div>--}}
+
                 </div>
-
-
             </div>
-
         </div>
-
     </div>
-
 </header>
 <div class="container">
 
 
 </div>
+<footer>
+    <div class="container">
+
+    </div>
+</footer>
 <script src="{{asset('js/app.js')}}"></script>
 </body>
 </html>
-
