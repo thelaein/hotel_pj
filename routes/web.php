@@ -43,10 +43,10 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::middleware("auth")->group(function(){
     Route::view("test","test")->name('test');
     Route::post("test",[TestController::class,'test'])->name('test');
-    Route::resource('feature',\App\Http\Controllers\FeatureController::class);
 
-    Route::resource('room',\App\Http\Controllers\RoomController::class);
-    Route::resource('photo',\App\Http\Controllers\PhotoController::class);
+    Route::resource('feature',\App\Http\Controllers\FeatureController::class)->middleware('isAdmin');
+    Route::resource('room',\App\Http\Controllers\RoomController::class)->middleware('isAdmin');
+    Route::resource('photo',\App\Http\Controllers\PhotoController::class)->middleware('isAdmin');
 
 
     Route::prefix("profile")->name("profile.")->group(function(){

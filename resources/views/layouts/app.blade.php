@@ -23,7 +23,7 @@
 @endguest
 
 @auth
-
+@isAdmin
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-3 col-xl-2 bg-white shadow-sm">
@@ -38,6 +38,7 @@
         </div>
     </div>
     <form action="{{ route('logout') }}" class="d-none" method="post" id="logoutForm">@csrf</form>
+    @endisAdmin
 @endauth
 
 
