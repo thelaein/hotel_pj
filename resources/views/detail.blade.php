@@ -25,7 +25,7 @@
                         <div class="card-text">
                             {{$room->description}}
                         </div>
-                        <a href="{{route('book',$room->id)}}" class="btn btn-outline-primary">Book Now</a>
+                        <a href="{{route('books',$room->id)}}" class="btn btn-outline-primary">Book Now</a>
 
                     </div>
                 </div>

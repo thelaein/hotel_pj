@@ -6,6 +6,7 @@ use App\Models\Book;
 use App\Http\Requests\StoreBookRequest;
 use App\Http\Requests\UpdateBookRequest;
 use App\Models\Room;
+use Illuminate\Database\Eloquent\Model;
 
 class BookController extends Controller
 {
@@ -22,7 +23,9 @@ class BookController extends Controller
      */
     public function index()
     {
-      
+        $books = Book::all();
+        return view('book.index',compact('books'));
+
     }
 
     /**
@@ -46,8 +49,6 @@ class BookController extends Controller
     public function store(StoreBookRequest $request)
     {
 
-
-
     }
 
 
@@ -59,7 +60,7 @@ class BookController extends Controller
      */
     public function show(Book $book)
     {
-        
+
     }
 
     /**
@@ -70,7 +71,7 @@ class BookController extends Controller
      */
     public function edit(Book $book)
     {
-        
+
     }
 
     /**
@@ -82,7 +83,7 @@ class BookController extends Controller
      */
     public function update(UpdateBookRequest $request, Book $book)
     {
-        
+
     }
 
     /**
@@ -93,7 +94,7 @@ class BookController extends Controller
      */
     public function destroy(Book $book)
     {
-        
+
     }
 
 }

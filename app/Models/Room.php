@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class Room extends Model
 {
@@ -18,5 +19,14 @@ class Room extends Model
 
     public function photos(){
         return $this->hasMany(Photo::class);
+    }
+
+
+    public function getTitleAttribute($value){
+        return Str::words($value,5);
+    }
+
+    public function setSlugAttribute($value){
+        return $this->attributes['slug'] = Str::slug($value);
     }
 }
