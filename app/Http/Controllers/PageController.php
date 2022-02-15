@@ -25,21 +25,20 @@ class PageController extends Controller
     }
 
     public function book($id){
-
-
 //        return "aa";
         $room = Room::find($id);
 
-
-        $room = Room::where('id',$id)->first();
+//        $room = Room::where('id',$id)->first();
 
         return view('book',compact('room'));
     }
 
 
-    public function bookStore(Request $request)
-    {
+
+    public function booking(Request $request){
+
 //        return $request;
+
         $request->validate([
             'name'=>'required|min:3',
             'email'=>'required|unique:users,email',
@@ -47,19 +46,7 @@ class PageController extends Controller
             'check_in'=>'required',
             'check_out'=>'required',
         ]);
-        $book = new Book();
 
-        $book->name = $request->name;
-        $book->email = $request->email;
-        $book->phone = $request->phone;
-        $book->room_id=$request->room_id;
-        $book->check_in = $request->check_in;
-        $book->check_out = $request->check_out;
-        $book->save();
-        return redirect()->route('index')->with('status','Booking success');
-
-    public function booking(Request $request){
-//        return $request;
        $book = new Book();
        $book->room_id = $request->room_id;
        $book->name = $request->name;
