@@ -17,9 +17,8 @@
                 <div class="card-header">
                     Book a Room
                 </div>
-
                 <div class="card-body">
-                    <form action="{{route('booking')}}" method="post" >
+                    <form action="{{route('booking')}}" method="post">
                         @csrf
 
                         <div class="mb-3">
@@ -33,6 +32,7 @@
                             <p class="text-danger small">{{$message}}</p>
                             @enderror
                         </div>
+
                         <div class="mb-3">
                             <label class="form-label">Email</label>
                             <input type="email" name="email" class="form-control">
@@ -40,23 +40,28 @@
                             <p class="text-danger small">{{$message}}</p>
                             @enderror
                         </div>
+
                         <div class="mb-3">
                             <label class="form-label">Phone</label>
-                            <input type='text' name="phone" class="form-control">
+                            <input type="tel" name="phone" class="form-control">
                             @error('phone')
                             <p class="text-danger small">{{$message}}</p>
                             @enderror
                         </div>
+
                         <div class="mb-3">
                             <label class="form-label">Check In</label>
-                            <input type="date" name="check_in" class="form-control">
+                            <input type="date" name="check_in" id="checkInDate" onclick="clickFromDate()"
+                                   class="form-control">
                             @error('check_in')
                             <p class="text-danger small">{{$message}}</p>
                             @enderror
                         </div>
+
                         <div class="mb-3">
                             <label class="form-label">Check Out</label>
-                            <input type="date" name="check_out" class="form-control">
+                            <input type="date" name="check_out" id="checkOutDate" onclick="clickFromDate()"
+                                   class="form-control">
                             @error('check_out')
                             <p class="text-danger small">{{$message}}</p>
                             @enderror
@@ -67,35 +72,51 @@
                         </div>
 
                     </form>
-
                 </div>
             </div>
-
-
         </div>
+
         <div class="col-lg-4">
             <div class="card">
-                <img src="{{asset('storage/feature_image/'.$room->feature_image)}}" >
-
+                <img src="{{asset('storage/feature_image/'.$room->feature_image)}}">
 
                 <div class="card-body">
                     <div class="card-title">
                         {{$room->name}}
-
                     </div>
                     <div class="card-text">
                         {{$room->description}}
                     </div>
                 </div>
             </div>
-
         </div>
-
 
     </div>
 </div>
 
-<script src="{{asset('js/app.js')}}"></script>
+<script>
+
+    function clickFromDate() {
+        const dtToday = new Date();
+        let month = dtToday.getMonth() + 1; //MM 2
+        let day = dtToday.getDate(); //dd 16
+        const year = dtToday.getFullYear(); //yyyy 2022
+
+        if (month < 10)
+            month = '0' + month.toString(); //02
+        if (day < 10)
+            day = '0' + day.toString(); //16
+
+        const maxDate = year + '-' + month + '-' + day; //2022-02-16
+
+        const checkIn = document.getElementById("checkInDate");
+        checkIn.setAttribute("min", maxDate);
+
+        const checkOut = document.getElementById("checkOutDate");
+        checkOut.setAttribute("min", maxDate);
+    }
+
+</script>
 </body>
 </html>
 

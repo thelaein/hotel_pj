@@ -24,7 +24,11 @@ class StoreBookRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name'=>'required',
+            'email'=>'required',
+            'phone'=>'required',
+            'check_in'=>'required',
+            'check_out'=>'required',
         ];
     }
 }
